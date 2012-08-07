@@ -1,7 +1,4 @@
-# Class: mpd::install
-#
-#
-class mpd::install {
+class mpd::server::install {
   package { "mpd":
     ensure => installed,
   }

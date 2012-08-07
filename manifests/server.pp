@@ -1,0 +1,32 @@
+class mpd::server(
+      $music_directory                  = '/var/lib/mpd/music',
+      $playlist_directory               = "/var/lib/mpd/playlists",
+      $db_file                          = "/var/lib/mpd/tag_cache",
+      $log_file                         = "/var/log/mpd/mpd.log",
+      $pid_file                         = "/var/run/mpd/pid",
+      $state_file                       = "/var/lib/mpd/state",
+      $sticker_file                     = "/var/lib/mpd/sticker.sql",
+      $user                             = "mpd",
+      $group                            = false,
+      $bind_to_address                  = "localhost",
+      $port                             = false,
+      $log_level                        = false,
+      $gapless_mp3_playback             = false,
+      $save_absolute_paths_in_playlists = false,
+      $metadata_to_use                  = false,
+      $auto_update                      = false,
+      $auto_update_depth                = false,
+      $follow_outside_symlinks          = false,
+      $follow_inside_symlinks           = false,
+      $zeroconf_enabled                 = false,
+      $zeroconf_name                    = false,
+      $password                         = false,
+      $default_permissions              = false,
+      $mixer_type                       = false,
+      $replaygain                       = false,
+      $replaygain_preamp                = false,
+      $volume_normalization             = false) {
+  include mpd::server::install
+  include mpd::server::config
+  include mpd::server::service
+}
