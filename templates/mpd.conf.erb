@@ -382,12 +382,14 @@ audio_output {
 # are doing.
 #
 #audio_buffer_size		"2048"
+<%= "audio_buffer_size \"#{@audio_buffer_size}\"" if @audio_buffer_size %>
 #
 # This setting controls the percentage of the buffer which is filled before
 # beginning to play. Increasing this reduces the chance of audio file skipping,
 # at the cost of increased time prior to audio playback.
 #
 #buffer_before_play		"10%"
+<%= "buffer_before_play \"#{@buffer_before_play}\"" if @buffer_before_play %>
 #
 ###############################################################################
 

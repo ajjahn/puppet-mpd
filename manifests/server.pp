@@ -25,7 +25,9 @@ class mpd::server(
       $mixer_type                       = false,
       $replaygain                       = false,
       $replaygain_preamp                = false,
-      $volume_normalization             = false) {
+      $volume_normalization             = false,
+      $audio_buffer_size                = false,
+      $buffer_before_play               = false) {
   include mpd::server::install
   include mpd::server::config
   include mpd::server::service
