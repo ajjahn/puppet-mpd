@@ -5,7 +5,8 @@ class mpd::client($volume = false,
                   $consume = false,
                   $crossfade = false,
                   $force_play = false,
-                  $force_update = false) {
+                  $force_update = false,
+                  $remove_duplicates = false) {
 
   include mpd::client::install
 
@@ -69,6 +70,24 @@ class mpd::client($volume = false,
     exec { "force-update":
       command => "mpc update",
       require => Class['mpd::client::install']
+    }
+  }
+
+  if $remove_duplicates {
+    file { "/usr/local/bin/mpd-remove-duplicates":
+      ensure => file,
+      mode => 755,
+      owner => 'root',
+      group => 'root',
+      source => "puppet:///modules/${module_name}/mpd-remove-duplicates.sh"
+    }
+
+    cron { "mpd-nodups":
+      command => '/usr/local/bin/mpd-remove-duplicates',
+      minute => '*/2',
+      user => 'root',
+      ensure => present,
+      require => [Class['mpd::client::install'], File["/usr/local/bin/mpd-remove-duplicates"]]
     }
   }
 
