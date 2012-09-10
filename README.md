@@ -16,6 +16,13 @@ Tweak and add the following to your site manifest:
 
     node 'server.example.com' {
 
+      class {'mpd::server':
+        music_directory => '/path/to/music',
+        replaygain => "track",
+        volume_normalization => "yes",
+        auto_update => "yes",
+      }
+
       class {'mpd::client':
         volume => '100',
         repeat => 'on',
