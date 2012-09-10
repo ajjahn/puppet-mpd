@@ -16,6 +16,7 @@ Tweak and add the following to your site manifest:
 
     node 'server.example.com' {
 
+      # Checkout 'manifests/server.pp' for more options.
       class {'mpd::server':
         music_directory => '/path/to/music',
         replaygain => "track",
