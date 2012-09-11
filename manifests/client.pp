@@ -84,7 +84,7 @@ class mpd::client($volume = false,
 
     cron { "mpd-nodups":
       command => '/usr/local/bin/mpd-remove-duplicates',
-      minute => '*/2',
+      minute => '*/5',
       user => 'root',
       ensure => present,
       require => [Class['mpd::client::install'], File["/usr/local/bin/mpd-remove-duplicates"]]
