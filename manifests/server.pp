@@ -27,7 +27,16 @@ class mpd::server(
       $replaygain_preamp                = false,
       $volume_normalization             = false,
       $audio_buffer_size                = false,
-      $buffer_before_play               = false) {
+      $buffer_before_play               = false,
+      $audio_outputs                    = []) {
+  # You can add custom audio outputs via an array containing each element
+  # another nested, key/value pairs array definig the output's custom parameters.
+  # See http://mpd.wikia.com/wiki/Configuration#Audio_Outputs
+  # Example audio_output for local PulseAudio:
+  # audio_outputs => [ { 'name' => 'PulseAudio', 'type' => 'pulse', }, ],
+  # Warning: There are issues specific to local PulseAudio output in MPD:
+  # https://wiki.archlinux.org/index.php/MPD/Tips_and_Tricks#MPD_.26_PulseAudio
+
   include mpd::server::install
   include mpd::server::config
   include mpd::server::service
