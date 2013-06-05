@@ -1,5 +1,5 @@
 class mpd::server::install {
   package { "mpd":
-    ensure => installed,
+    ensure => $mpd::server::ensure,
   }
 }
