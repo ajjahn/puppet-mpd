@@ -1,4 +1,5 @@
 class mpd::server(
+      $ensure                           = installed,
       $music_directory                  = '/var/lib/mpd/music',
       $playlist_directory               = "/var/lib/mpd/playlists",
       $db_file                          = "/var/lib/mpd/tag_cache",
@@ -30,6 +31,8 @@ class mpd::server(
       $buffer_before_play               = false,
       $audio_outputs                    = []) {
   include mpd::server::install
-  include mpd::server::config
-  include mpd::server::service
+  if ( $ensure != purged ) {
+    include mpd::server::config
+    include mpd::server::service
+  }
 }
