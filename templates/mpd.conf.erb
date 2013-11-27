@@ -322,7 +322,7 @@ audio_output {
 ###############################################################################
 
 # Audio outputs managed by puppet #############################################
-<% audio_outputs.each do |params| %>
+<% @audio_outputs.each do |params| %>
 audio_output {
 <% params.each do |key, value| %>
 	<%= key %>	"<%= value %>"
