@@ -1,5 +1,7 @@
 class mpd::server(
       $ensure                           = installed,
+      $service_enable                   = true,
+      $service_ensure                   = running,
       $music_directory                  = '/var/lib/mpd/music',
       $playlist_directory               = "/var/lib/mpd/playlists",
       $db_file                          = "/var/lib/mpd/tag_cache",

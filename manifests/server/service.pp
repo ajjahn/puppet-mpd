@@ -1,9 +1,9 @@
 class mpd::server::service {
  service { "mpd":
-    ensure => running,
+    ensure => $mpd::server::service_ensure,
     hasstatus => true,
     hasrestart => true,
-    enable => true,
+    enable => $mpd::server::service_enable,
     require => Class["mpd::server::config"]
   }
 }
